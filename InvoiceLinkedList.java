@@ -17,6 +17,21 @@ public class InvoiceLinkedList {
 		return counter;
 	}
 
+	public void add(Invoice invoice) {
+		Node addNode = new Node(invoice);
+		Node curr = head;
+		if(head == null) {
+			head = addNode;
+		} else {
+			while(curr.next != null) {
+				curr = curr.next;
+			}
+			curr.next = addNode;
+		}
+	}
+
+	
+
 
 
 

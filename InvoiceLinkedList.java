@@ -56,14 +56,14 @@ public class InvoiceLinkedList {
 		size++;
 	}
 
-	public Node get(int index) {
+	public Invoice get(int index) {
 		Node curr = head;
 		int count = 1;
 		while(count < index) {
 			curr = curr.next;
 			count++;
 		}
-		return curr;
+		return curr.data;
 	}
 
 	public boolean remove(Invoice invoice) {
@@ -94,12 +94,22 @@ public class InvoiceLinkedList {
 		}
 	}
 
-	public void swapValues(int index1, int index2) {
-		Node swap1 = get(index1); // Node pointers
-		Node swap2 = get(index2);
+	public Node getNode(int index) {
+		Node curr = head;
+		int count = 1;
+		while(count < index) {
+			curr = curr.next;
+			count++;
+		}
+		return curr;
+	}
 
-		Invoice temp1 = get(index1).data; // gets the invoice info from Node pointer
-		Invoice temp2 = get(index2).data;
+	public void swapValues(int index1, int index2) {
+		Node swap1 = getNode(index1); // Node pointers
+		Node swap2 = getNode(index2);
+
+		Invoice temp1 = get(index1); // gets the invoice info
+		Invoice temp2 = get(index2);
 
 		swap2.data = temp1; // swaps
 		swap1.data = temp2;

@@ -30,7 +30,18 @@ public class InvoiceLinkedList {
 		}
 	}
 
-	
+	public void insert(Invoice invoice) {
+		Node addNode = new Node(invoice);
+		if(head == null) {
+			head = addNode;
+		} else if(addNode.data < head.data) {
+			addNode.next = head;
+			head = addNode;
+		} else {
+			Node curr = head;
+			Node prev = head;
+		}
+	}
 
 
 

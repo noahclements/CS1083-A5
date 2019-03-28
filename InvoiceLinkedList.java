@@ -69,18 +69,34 @@ public class InvoiceLinkedList {
 	public boolean remove(Invoice invoice) {
 		Node removeNode = new Node(invoice);
 		Node curr = head;
-		while(curr != null || curr != removeNode) {
-			curr = curr.next;
+		if(removeNode == head) {
+			head = head.next;
+			head.prev = null;
+			size--;
+			return true;
+		} else if(removeNode == tail) {
+			tail.prev.next = null;
+			tail.prev = tail;
+			size--;
+			return true;
+		} else {
+			while(curr.next != null || curr.next != removeNode) {
+				curr = curr.next;
+			}
+			if(curr == removeNode) {
+				curr.prev.next = curr.next;
+				curr.next.prev = curr.prev;
+				size--;
+				return true;
+			} else {
+				return false;
+			}
 		}
-
 	}
 
 	public void swapValues(int index1, int index2) {
 
 	}
-
-
-
 
 
 
@@ -91,6 +107,20 @@ public class InvoiceLinkedList {
 			curr = curr.next;
 		}
 	}
+
+	public void printBackwards() {
+		Node curr = tail;
+		while(curr != null) {
+			System.out.println(curr.data);
+			curr = curr.prev;
+		}
+	}
+
+	public Node getCustomerSublist(String customerID) {
+
+	}
+
+
 
 
 	public class Node { // inner

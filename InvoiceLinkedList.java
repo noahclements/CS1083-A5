@@ -37,14 +37,14 @@ public class InvoiceLinkedList {
 		if(head == null) {
 			head = addNode;
 			tail = addNode;
-		} else if(addNode.data < head.data) {
+		} else if(addNode.data.compareTo(head.data) == -1) { // if addNode.data < head.data
 			addNode.next = head;
 			head.prev = addNode;
 			head = addNode;
 		} else {
 			Node curr = head;
 			Node prev = head;
-			while(curr != null && curr.data < addNode.data) {
+			while(curr != null && curr.data.compareTo(addNode.data) == -1) { // if curr.data < addNode.data
 				prev = curr;
 				curr = curr.next;
 			}
@@ -95,17 +95,27 @@ public class InvoiceLinkedList {
 	}
 
 	public void swapValues(int index1, int index2) {
-
+		Node curr = head;
+		int count = 1;
+		while(count < size) {
+			if(count == index1) { // not done 
+				Node swap1 = new Node(curr.data);
+			}
+		}
 	}
 
 
 
 	public void print() {
 		Node curr = head;
+		String result = "";
 		while(curr != null) {
-			System.out.println(curr.data);
+			result += curr.data.getCustomerID() + "\t";
+			result += curr.data.getInvoiceID() + "\t";
+			result += curr.data.getAmount() +"\n";
 			curr = curr.next;
 		}
+		System.out.println(result);
 	}
 
 	public void printBackwards() {
@@ -116,8 +126,17 @@ public class InvoiceLinkedList {
 		}
 	}
 
-	public Node getCustomerSublist(String customerID) {
+	public void getCustomerSublist(String customerID) {
+		Node curr = head;
+		InvoiceLinkedList sub = new InvoiceLinkedList();
 
+		while(curr != null) {
+			if(curr.data.getCustomerID().equals(customerID)) {
+				Node addNode  = new Node(curr.data);
+				//sub.add(addNode); // not done 
+			}
+			curr = curr.next;
+		}
 	}
 
 

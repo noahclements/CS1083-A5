@@ -1,9 +1,11 @@
 public class InvoiceLinkedList {
-	private Node head;
-	private Node tail;
+	private Node head, tail;
+	private int size;
 
 	public InvoiceLinkedList() {
 		head = null;
+		tail = null;
+		size = 0;
 	}
 
 
@@ -44,19 +46,23 @@ public class InvoiceLinkedList {
 	}
 
 
-
-
-
-
+	public void print() {
+		Node curr = head;
+		while(curr != null) {
+			System.out.println(curr.data);
+			curr = curr.next;
+		}
+	}
 
 
 	public class Node { // inner
 		public int data;
-		public Node next;
+		public Node prev,next;
 
-		public Node(int data) {
-			this.data = data;
+		public Node(int dataIn) {
+			data = dataIn;
 			next = null;
+			prev = null;
 		}
 
 		public Node(int data, Node next) { // overload

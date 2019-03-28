@@ -36,13 +36,25 @@ public class InvoiceLinkedList {
 		Node addNode = new Node(invoice);
 		if(head == null) {
 			head = addNode;
+			tail = addNode;
 		} else if(addNode.data < head.data) {
 			addNode.next = head;
+			head.prev = addNode;
 			head = addNode;
 		} else {
 			Node curr = head;
 			Node prev = head;
+
+			while(curr != null && curr.data < addNode.data) {
+				prev = curr;
+				curr = curr.next;
+			}
+			curr.next.prev = addNode;
+			prev.next = addNode;
+			addNode.prev = prev;
+			addNode.next = curr;
 		}
+
 	}
 
 

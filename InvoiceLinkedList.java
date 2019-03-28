@@ -21,15 +21,15 @@ public class InvoiceLinkedList {
 
 	public void add(Invoice invoice) {
 		Node addNode = new Node(invoice);
-		Node curr = head;
 		if(head == null) {
 			head = addNode;
+			tail = addNode;
 		} else {
-			while(curr.next != null) {
-				curr = curr.next;
-			}
-			curr.next = addNode;
+			tail.next = addNode;
+			addNode.prev = tail;
+			tail = addNode;
 		}
+		size++;
 	}
 
 	public void insert(Invoice invoice) {

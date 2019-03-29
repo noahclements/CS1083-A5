@@ -80,7 +80,7 @@ public class InvoiceLinkedList {
 			size--;
 			return true;
 		} else {
-			while(curr.next != null || curr.next != removeNode) {
+			while(curr != null) { //  || curr.next != removeNode removed
 				curr = curr.next;
 			}
 			if(curr == removeNode) {
@@ -105,6 +105,7 @@ public class InvoiceLinkedList {
 	}
 
 	public void swapValues(int index1, int index2) {
+		/*
 		Node swap1 = getNode(index1); // Node pointers
 		Node swap2 = getNode(index2);
 
@@ -113,7 +114,39 @@ public class InvoiceLinkedList {
 
 		swap2.data = temp1; // swaps
 		swap1.data = temp2;
-		
+		*/
+		int count = 0;
+		Node curr = head;
+		if(index1 == 0) {
+			curr = head;
+		} else {
+			count = index1;
+			while(count >= 0 && curr != null) {
+				curr = curr.next;
+				count--;
+			}
+		}
+
+		Invoice temp = curr.data;
+		curr.data = get(index2);
+
+
+		Node curr2 = head;
+		if(index2 == 0) {
+			curr2 = head;
+		} else {
+			//int count = index2;
+
+			while(index2 >= 0 && curr2 != null) {
+				curr2 = curr2.next;
+				index2--;
+			}
+		}
+
+		curr2.data = temp;
+
+
+
 	}
 
 

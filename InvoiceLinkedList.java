@@ -105,6 +105,43 @@ public class InvoiceLinkedList {
 	}
 
 	public void swapValues(int index1, int index2) {
+		Node curr1 = head;
+		Node curr2 = head;
+
+		Invoice swap1 = get(index1);
+		Invoice swap2 = get(index2);
+
+		if(index1 == 0) {
+			curr1 = head;
+		} else {
+			int count1 = index1;
+			while(count1 > 0 && curr1 != null) {
+				curr1 = curr1.next;
+				count1--;
+			}
+		}
+		curr1.data = swap2;
+
+
+		if(index2 == 0) {
+			curr2 = head;
+		} else {
+			int count2 = index2;
+			while(count2 > 0 && curr2 != null) {
+				curr2 = curr2.next;
+				count2--;
+			}
+		}
+		curr2.data = swap1;
+
+
+
+
+
+
+
+
+
 		/*
 		Node swap1 = getNode(index1); // Node pointers
 		Node swap2 = getNode(index2);
@@ -115,37 +152,27 @@ public class InvoiceLinkedList {
 		swap2.data = temp1; // swaps
 		swap1.data = temp2;
 		*/
+		//int size = list.size();
+
+		/*
 		int count = 0;
 		Node curr = head;
-		if(index1 == 0) {
-			curr = head;
-		} else {
-			count = index1;
-			while(count >= 0 && curr != null) {
-				curr = curr.next;
-				count--;
+		Node first = null; // first
+		Node second = null; // second
+
+		while(first == null || second == null) {
+			if(count == index1) {
+				first = curr;
+			} else if(count == index2) {
+				second = curr;
 			}
+			count++;
+			curr = curr.next;
 		}
-
-		Invoice temp = curr.data;
-		curr.data = get(index2);
-
-
-		Node curr2 = head;
-		if(index2 == 0) {
-			curr2 = head;
-		} else {
-			//int count = index2;
-
-			while(index2 >= 0 && curr2 != null) {
-				curr2 = curr2.next;
-				index2--;
-			}
-		}
-
-		curr2.data = temp;
-
-
+		Invoice temp = first.data;
+		first.data = second.data;
+		second.data = temp;
+*/
 
 	}
 

@@ -36,7 +36,7 @@ public class Invoice implements Comparable<Invoice>{
 				return 1; // if this > other
 			}
 		} else {
-			return this.getCustomerID().compareTo(other.getCustomerID());
+			return customerID.compareTo(other.getCustomerID());
 		}
 	}
 	

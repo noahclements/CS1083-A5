@@ -25,14 +25,22 @@ public class Invoice implements Comparable<Invoice>{
 
 	public int compareTo(Invoice other) {
 		double TOLERANCE = 1E-14;
-		// if this == other
-		if((Math.abs(this.getAmount() - other.getAmount()) < TOLERANCE)) {
-			return 0;
-		} else if((this.getAmount() - other.getAmount()) < TOLERANCE) { // if this < other
-			return -1;
+
+		if(this.getCustomerID().equals(other.getCustomerID())) {
+				// if this == other
+			if((Math.abs(this.getAmount() - other.getAmount()) < TOLERANCE)) {
+				return 0;
+			} else if((this.getAmount() - other.getAmount()) < TOLERANCE) { // if this < other
+				return -1;
+			} else {
+				return 1; // if this > other
+			}
 		} else {
-			return 1; // if this > other
+			return this.getCustomerID().compareTo(other.getCustomerID());
 		}
-	} 
+	}
 	
+
+
+
 }
